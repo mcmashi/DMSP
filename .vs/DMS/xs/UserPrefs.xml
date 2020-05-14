@@ -1,0 +1,15 @@
+﻿<Properties StartupConfiguration="{17C4F71B-86C8-3190-030D-600DB65F0AF0}|">
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="Unity.Editor" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Script/Scroll.cs">
+    <Files>
+      <File FileName="Assets/Script/Player.cs" Line="34" Column="43" />
+      <File FileName="Assets/Script/Scroll.cs" Line="15" Column="41" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
+</Properties>
