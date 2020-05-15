@@ -19,8 +19,13 @@ public class Player : MonoBehaviour {
 
     private new Rigidbody2D rigidbody2D;
 
+    public GameObject pbobj;
+
+    Vector3 Pposition;
+
     private void Start()
     {
+
         this.rigidbody2D = this.GetComponent<Rigidbody2D>();
 
         // あらかじめ、画面上下左右の縁がワールド空間上でどこに位置するか調べておく
@@ -43,6 +48,16 @@ public class Player : MonoBehaviour {
         var y = Input.GetAxisRaw("Vertical");
 
         this.dir = new Vector2(x, y);
+
+        //自分の現在の位置得る
+        Pposition = this.transform.position;
+
+        //弾発射プレイやーの位置にインスタンス化
+        if(Input.GetKeyDown("space")){
+            GameObject instance = (GameObject)Instantiate(pbobj,Pposition,Quaternion.identity);
+        }
+
+
     }
 
     private void FixedUpdate()

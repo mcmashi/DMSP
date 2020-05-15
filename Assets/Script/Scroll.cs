@@ -12,9 +12,9 @@ public class Scroll : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         transform.Translate( 0, -0.1f, 0);
-        if (transform.position.y < -10.4f)
+        if (transform.position.y < -10f)
         {
-            transform.position = new Vector3( 0, 0, 0);
+            transform.position = new Vector3( 0, 0, 0.1f);
         }
     }
 }
