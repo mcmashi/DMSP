@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Player : MonoBehaviour {
 
+    //初期エネルギ＝
+    public float energy = 1000.0f;
 
 // 移動スピード
     public float speed = 5;
@@ -20,6 +22,8 @@ public class Player : MonoBehaviour {
     private new Rigidbody2D rigidbody2D;
 
     public GameObject pbobj;
+
+    public GameObject exobj;
 
     Vector3 Pposition;
 
@@ -58,6 +62,17 @@ public class Player : MonoBehaviour {
         }
 
 
+        //エネルギー処理
+        energy -= 0.5f;
+
+        if(energy <= 0){
+            energy = 0;
+
+        }else if(energy >= 1000){
+            energy = 1000;
+
+        }
+
     }
 
     private void FixedUpdate()
@@ -88,5 +103,16 @@ public class Player : MonoBehaviour {
         // クランプ後の速度を代入
         this.rigidbody2D.velocity = clampedVelocity;
     }
+
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.gameObject.tag == "enemy"){
+
+            GameObject Instance = (GameObject)Instantiate(exobj, Pposition, Quaternion.identity);
+            Destroy(this.gameObject);
+        }
+    }
+
 }
 
