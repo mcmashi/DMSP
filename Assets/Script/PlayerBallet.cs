@@ -23,11 +23,11 @@ public class PlayerBallet : MonoBehaviour {
 
         this.rigidbody2D.velocity = dir * speed;
 
-        //画面外に出ると消える。
-        if (!GetComponent<Renderer>().isVisible)
-        {
-            Destroy(this.gameObject);
-        }
+    }
 
+    void OnBecameInvisible()
+    {
+        //画面外に出ると消える。
+        Destroy(this.gameObject);
     }
 }

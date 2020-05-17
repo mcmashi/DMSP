@@ -7,7 +7,7 @@ public class Player : MonoBehaviour {
     //初期エネルギ＝
     public float energy = 1000.0f;
 
-// 移動スピード
+    // 移動スピード
     public float speed = 5;
 
     // 移動する向き
@@ -21,11 +21,18 @@ public class Player : MonoBehaviour {
 
     private new Rigidbody2D rigidbody2D;
 
+    //アサインするプレハブ
     public GameObject pbobj;
 
     public GameObject exobj;
 
+    //そのプレハブを生成する自分の座標
     Vector3 Pposition;
+
+    //複製するインスタンス
+    private GameObject Insancepb;
+
+    private GameObject Instanceex;
 
     private void Start()
     {
@@ -58,7 +65,7 @@ public class Player : MonoBehaviour {
 
         //弾発射プレイやーの位置にインスタンス化
         if(Input.GetKeyDown("space")){
-            GameObject instance = (GameObject)Instantiate(pbobj,Pposition,Quaternion.identity);
+            GameObject instancepb = (GameObject)Instantiate(pbobj,Pposition,Quaternion.identity);
         }
 
 
@@ -107,10 +114,27 @@ public class Player : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        //敵の場合
         if(other.gameObject.tag == "enemy"){
 
-            GameObject Instance = (GameObject)Instantiate(exobj, Pposition, Quaternion.identity);
+            Instanceex = (GameObject)Instantiate(exobj, Pposition, Quaternion.identity);
             Destroy(this.gameObject);
+        }
+
+        //敵の弾の場合
+        if (other.gameObject.tag == "EB")
+        {
+
+            Instanceex = (GameObject)Instantiate(exobj, Pposition, Quaternion.identity);
+            Destroy(this.gameObject);
+        }
+
+
+        //エナジーアイテムの場合
+        if (other.gameObject.tag == "energy"){
+
+            energy += 100;
+            Destroy(other.gameObject);
         }
     }
 

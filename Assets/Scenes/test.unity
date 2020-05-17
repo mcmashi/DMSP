@@ -748,6 +748,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   exobj: {fileID: 1361803908609156, guid: 837e242ed24d54ab4955ab8bc792b753, type: 2}
+  eniobj: {fileID: 1181332066742584, guid: 3a2665a67a948474b90920b9500f0ace, type: 2}
+  ebobj: {fileID: 1246207763974052, guid: 348c893512d8246998d962adb0115fba, type: 2}
+  enirand: 4
+  TimeOut: 2
 --- !u!50 &1741195098
 Rigidbody2D:
   serializedVersion: 4

@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class EnergyGage : MonoBehaviour {
 
+
     GameObject Player;
 
     Player script;
@@ -15,7 +16,7 @@ public class EnergyGage : MonoBehaviour {
 	void Start () {
 
         ENImage = this.GetComponent<Image>();
-
+        //プレイヤーの情報取得してから、そのスクリプトのエネルギーの値にアクセスする。
         Player = GameObject.Find("Player");
         script = Player.GetComponent<Player>();
 		

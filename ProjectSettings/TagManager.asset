@@ -6,6 +6,8 @@ TagManager:
   tags:
   - PB
   - enemy
+  - energy
+  - EB
   layers:
   - Default
   - TransparentFX
