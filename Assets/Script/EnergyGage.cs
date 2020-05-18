@@ -26,7 +26,5 @@ public class EnergyGage : MonoBehaviour {
 	void Update () {
         //エネルギーゲージの制御
         ENImage.fillAmount = 0.75f * (script.energy / 1000.0f);
-
-        Debug.Log(script.energy);
     }
 }

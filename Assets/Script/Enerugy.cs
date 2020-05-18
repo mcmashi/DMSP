@@ -20,4 +20,10 @@ public class Enerugy : MonoBehaviour {
 	void Update () {
         rigidbody.velocity = speed * dir;
 	}
+
+    void OnBecameInvisible()
+    {
+        //画面外に出ると消える。
+        Destroy(this.gameObject);
+    }
 }

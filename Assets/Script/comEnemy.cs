@@ -29,20 +29,41 @@ public class comEnemy : MonoBehaviour {
 
     private float EbTime = 0.0f;
 
+    private Vector2 dir;
+
+    public float speed  = 3.0f;
+
+    new Rigidbody2D rigidbody2D;
+
+    //画面外生成時消えない為の判定
+    bool Evisible = false;
 
     // Use this for initialization
     void Start () {
+        dir = new Vector2( 0.0f, -1.0f);
+        rigidbody2D = GetComponent<Rigidbody2D>();
 		
 	}
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update()
+    {
+
+        rigidbody2D.velocity = speed * dir;
 
         Eposition = this.transform.position;
-        EnemyBullet();
+        //画面内に入れば打ち始める。
+        if (Evisible)
+        {
+            EnemyBullet();
+        }
+        //画面内か判定
+        if (GetComponent<Renderer>().isVisible)
+        {
+            Evisible = true;
+        }
 
-		
-	}
+    }
 
     void OnTriggerEnter2D(Collider2D collision){
         //プレイヤーの弾に当たると消える。アイテムを出す。
@@ -72,5 +93,14 @@ public class comEnemy : MonoBehaviour {
         }
 
 
+    }
+
+         void OnBecameInvisible()
+    {
+        if (Evisible)
+        {
+            //画面外に出ると消える。
+            Destroy(this.gameObject);
+        }
     }
 }
