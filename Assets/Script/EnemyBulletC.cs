@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyBulletA : MonoBehaviour {
+public class EnemyBulletC : MonoBehaviour {
 
     //プレイヤーの情報取得用
     GameObject Player;
@@ -26,7 +26,6 @@ public class EnemyBulletA : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
 
         rigidbody2D.velocity = dir * speed;
 

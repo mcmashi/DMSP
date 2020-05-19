@@ -4,14 +4,23 @@ using UnityEngine;
 
 public class Stage1_Wave : MonoBehaviour {
 
+    //アサインする敵のプレハブ
     public GameObject enrobAobj;
 
+    public GameObject enrobBobj;
+
+    public GameObject enrobCobj;
+
     private GameObject InstanceenrobA;
+
+    private GameObject InstanceenrobB;
+
+    private GameObject InstanceenrobC;
 
     //ウェーブの順番
     private int wcount = 0; 
 
-    //0:何も無い　1:雑魚敵A
+    //0:何も無い  1:雑魚敵A  2:雑魚敵B 3:雑魚的C
     //ウェーブ01
     //----------------------------
     private int[,] Wave1= new int[5,9]{
@@ -20,6 +29,56 @@ public class Stage1_Wave : MonoBehaviour {
         {0,0,1,0,1,0,1,0,0},
         {0,0,0,0,0,0,0,0,0},
         {0,0,0,0,1,0,0,0,0}
+
+    };
+    //ウェーブ02
+    //----------------------------
+    private int[,] Wave2 = new int[5, 9]{
+        {0,0,0,0,0,0,0,0,0},
+        {0,2,0,0,0,0,0,2,0},
+        {0,0,2,0,0,0,2,0,0},
+        {0,0,0,2,0,2,0,0,0},
+        {0,0,0,0,2,0,0,0,0}
+
+    };
+    //ウェーブ03
+    //----------------------------
+    private int[,] Wave3 = new int[5, 9]{
+        {0,0,0,0,0,0,0,0,0},
+        {0,0,1,0,1,0,1,0,0},
+        {0,0,0,0,2,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0}
+
+    };
+    //ウェーブ04
+    //----------------------------
+    private int[,] Wave4 = new int[5, 9]{
+        {0,0,3,0,0,0,3,0,0},
+        {0,3,0,0,0,0,0,3,0},
+        {0,0,0,0,3,0,0,0,0},
+        {0,0,3,0,0,0,3,0,0},
+        {0,0,0,0,0,0,0,0,0}
+
+    };
+    //ウェーブ05
+    //----------------------------
+    private int[,] Wave5 = new int[5, 9]{
+        {0,0,0,0,0,0,0,0,0},
+        {0,0,3,0,2,0,3,0,0},
+        {0,0,0,0,0,0,0,0,0},
+        {0,1,0,0,1,0,0,1,0},
+        {0,0,0,0,0,0,0,0,0}
+
+    };
+    //ウェーブ06
+    //----------------------------
+    private int[,] Wave6 = new int[5, 9]{
+        {0,1,0,0,0,0,0,1,0},
+        {0,0,0,0,3,0,0,0,0},
+        {0,0,2,0,0,0,2,0,0},
+        {0,0,0,0,0,0,0,0,0},
+        {0,3,0,0,3,0,0,3,0}
 
     };
 
@@ -53,9 +112,22 @@ public class Stage1_Wave : MonoBehaviour {
             switch(wcount){
                 case 1:
                     WaveDraw(Wave1);
-
                     break;
-
+                case 2:
+                    WaveDraw(Wave2);
+                    break;
+                case 3:
+                    WaveDraw(Wave3);
+                    break;
+                case 4:
+                    WaveDraw(Wave4);
+                    break;
+                case 5:
+                    WaveDraw(Wave5);
+                    break;
+                case 6:
+                    WaveDraw(Wave6);
+                    break;
 
             }
 
@@ -84,6 +156,14 @@ public class Stage1_Wave : MonoBehaviour {
                 switch (wave[i, j]){
                     case 1:
                         InstanceenrobA = (GameObject)Instantiate(enrobAobj, new Vector3(spacex + camx + zeropoint, 5 - spacey + camy, 0), Quaternion.identity);
+                        break;
+
+                    case 2:
+                        InstanceenrobB = (GameObject)Instantiate(enrobBobj, new Vector3(spacex + camx + zeropoint, 5 - spacey + camy, 0), Quaternion.identity);
+                        break;
+
+                    case 3:
+                        InstanceenrobC = (GameObject)Instantiate(enrobCobj, new Vector3(spacex + camx + zeropoint, 5 - spacey + camy, 0), Quaternion.identity);
                         break;
 
                 }

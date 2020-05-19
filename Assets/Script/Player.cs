@@ -44,10 +44,10 @@ public class Player : MonoBehaviour {
         var positionZ = this.transform.position.z;
         var topRight = mainCamera.ViewportToWorldPoint(new Vector3(1.0f, 1.0f, positionZ));
         var bottomLeft = mainCamera.ViewportToWorldPoint(new Vector3(0.0f, 0.0f, positionZ));
-        this.boundL = bottomLeft.x + 0.3f;
-        this.boundR = topRight.x - 0.3f;
-        this.boundT = topRight.y - 0.3f;
-        this.boundB = bottomLeft.y + 0.3f;
+        this.boundL = bottomLeft.x + 0.2f;
+        this.boundR = topRight.x - 0.2f;
+        this.boundT = topRight.y - 0.2f;
+        this.boundB = bottomLeft.y + 0.2f;
     }
 
     private void Update()

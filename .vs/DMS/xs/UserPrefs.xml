@@ -1,16 +1,18 @@
 ﻿<Properties StartupConfiguration="{17C4F71B-86C8-3190-030D-600DB65F0AF0}|">
   <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="Unity.Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Script/Stage1_Wave.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Script/EnemyBulletC.cs">
     <Files>
-      <File FileName="Assets/Script/Player.cs" Line="65" Column="9" />
+      <File FileName="Assets/Script/Player.cs" Line="65" Column="1" />
       <File FileName="Assets/Script/Scroll.cs" Line="13" Column="18" />
       <File FileName="Assets/Script/PlayerBallet.cs" Line="28" Column="4" />
-      <File FileName="Assets/Script/comEnemy.cs" Line="60" Column="17" />
+      <File FileName="Assets/Script/comEnemy.cs" Line="174" Column="34" />
       <File FileName="Assets/Script/explosion.cs" Line="17" Column="34" />
       <File FileName="Assets/Script/EnergyGage.cs" Line="28" Column="64" />
       <File FileName="Assets/Script/Enerugy.cs" Line="30" Column="1" />
-      <File FileName="Assets/Script/EnemyBulletA.cs" Line="7" Column="5" />
-      <File FileName="Assets/Script/Stage1_Wave.cs" Line="9" Column="1" />
+      <File FileName="Assets/Script/EnemyBulletA.cs" Line="23" Column="38" />
+      <File FileName="Assets/Script/Stage1_Wave.cs" Line="22" Column="29" />
+      <File FileName="Assets/Script/EnemyBulletB.cs" Line="21" Column="21" />
+      <File FileName="Assets/Script/EnemyBulletC.cs" Line="8" Column="23" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
