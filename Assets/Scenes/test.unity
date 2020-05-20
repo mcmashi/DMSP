@@ -745,9 +745,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfd227f93ee6a438b8d47bdd7b2909ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  debugwave: 0
   enrobAobj: {fileID: 1063309466985968, guid: 6b09557834a894adca55690f9d56dabd, type: 2}
   enrobBobj: {fileID: 1656713597729374, guid: 6fad50105968c46cc882532098c88eeb, type: 2}
   enrobCobj: {fileID: 1037026449428088, guid: a918ff411df1f43af85394e670a63239, type: 2}
+  bossobj: {fileID: 1838268549857984, guid: 0349b85a06baf4175b8fe661663ace12, type: 2}
   TimeOut: 5
 --- !u!4 &2093488711
 Transform:

@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Stage1_Wave : MonoBehaviour {
 
+    //デバックモード
+    public bool debugwave = false;
+
     //アサインする敵のプレハブ
     public GameObject enrobAobj;
 
@@ -11,14 +14,18 @@ public class Stage1_Wave : MonoBehaviour {
 
     public GameObject enrobCobj;
 
+    public GameObject bossobj;
+
     private GameObject InstanceenrobA;
 
     private GameObject InstanceenrobB;
 
     private GameObject InstanceenrobC;
 
+    private GameObject Instanceboss;
+
     //ウェーブの順番
-    private int wcount = 0; 
+    private int wcount = 0;
 
     //0:何も無い  1:雑魚敵A  2:雑魚敵B 3:雑魚的C
     //ウェーブ01
@@ -35,7 +42,7 @@ public class Stage1_Wave : MonoBehaviour {
     //----------------------------
     private int[,] Wave2 = new int[5, 9]{
         {0,0,0,0,0,0,0,0,0},
-        {0,2,0,0,0,0,0,2,0},
+        {0,2,0,0,3,0,0,2,0},
         {0,0,2,0,0,0,2,0,0},
         {0,0,0,2,0,2,0,0,0},
         {0,0,0,0,2,0,0,0,0}
@@ -44,10 +51,10 @@ public class Stage1_Wave : MonoBehaviour {
     //ウェーブ03
     //----------------------------
     private int[,] Wave3 = new int[5, 9]{
-        {0,0,0,0,0,0,0,0,0},
         {0,0,1,0,1,0,1,0,0},
-        {0,0,0,0,2,0,0,0,0},
+        {0,0,1,0,1,0,1,0,0},
         {0,0,0,0,0,0,0,0,0},
+        {2,0,0,0,2,0,0,0,2},
         {0,0,0,0,0,0,0,0,0}
 
     };
@@ -55,8 +62,8 @@ public class Stage1_Wave : MonoBehaviour {
     //----------------------------
     private int[,] Wave4 = new int[5, 9]{
         {0,0,3,0,0,0,3,0,0},
-        {0,3,0,0,0,0,0,3,0},
-        {0,0,0,0,3,0,0,0,0},
+        {3,3,0,0,0,0,0,3,3},
+        {3,0,0,0,3,0,0,0,3},
         {0,0,3,0,0,0,3,0,0},
         {0,0,0,0,0,0,0,0,0}
 
@@ -64,9 +71,9 @@ public class Stage1_Wave : MonoBehaviour {
     //ウェーブ05
     //----------------------------
     private int[,] Wave5 = new int[5, 9]{
-        {0,0,0,0,0,0,0,0,0},
+        {3,0,0,0,0,0,0,0,3},
         {0,0,3,0,2,0,3,0,0},
-        {0,0,0,0,0,0,0,0,0},
+        {0,0,0,2,0,2,0,0,0},
         {0,1,0,0,1,0,0,1,0},
         {0,0,0,0,0,0,0,0,0}
 
@@ -76,8 +83,8 @@ public class Stage1_Wave : MonoBehaviour {
     private int[,] Wave6 = new int[5, 9]{
         {0,1,0,0,0,0,0,1,0},
         {0,0,0,0,3,0,0,0,0},
-        {0,0,2,0,0,0,2,0,0},
-        {0,0,0,0,0,0,0,0,0},
+        {1,0,2,0,0,0,2,0,1},
+        {1,0,0,0,0,0,0,0,1},
         {0,3,0,0,3,0,0,3,0}
 
     };
@@ -102,37 +109,50 @@ public class Stage1_Wave : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        //一定時間でウェーブが始まる。
-        ewTime += Time.deltaTime;
 
-        if(ewTime >= TimeOut){
-            wcount++;
+        //デバッグ中か判定
+        if (!debugwave)
+        {
 
-            ewTime = 0.0f;
-            switch(wcount){
-                case 1:
-                    WaveDraw(Wave1);
-                    break;
-                case 2:
-                    WaveDraw(Wave2);
-                    break;
-                case 3:
-                    WaveDraw(Wave3);
-                    break;
-                case 4:
-                    WaveDraw(Wave4);
-                    break;
-                case 5:
-                    WaveDraw(Wave5);
-                    break;
-                case 6:
-                    WaveDraw(Wave6);
-                    break;
+            //一定時間でウェーブが始まる。
+            ewTime += Time.deltaTime;
+
+            if (ewTime >= TimeOut)
+            {
+                wcount++;
+
+                ewTime = 0.0f;
+                switch (wcount)
+                {
+                    case 1:
+                        WaveDraw(Wave1);
+                        break;
+                    case 2:
+                        WaveDraw(Wave2);
+                        break;
+                    case 3:
+                        WaveDraw(Wave3);
+                        break;
+                    case 4:
+                        WaveDraw(Wave4);
+                        break;
+                    case 5:
+                        WaveDraw(Wave5);
+                        break;
+                    case 6:
+                        WaveDraw(Wave6);
+                        break;
+
+                    case 10:
+                        //ボス生成
+                        Instanceboss = (GameObject)Instantiate(bossobj,new Vector3( 0, 10.0f, 0),Quaternion.identity);
+                        break;
+
+                }
+
+
 
             }
-
-
-
         }
 
 		

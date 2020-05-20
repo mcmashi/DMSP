@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyBulletB : MonoBehaviour {
+public class BossBullet: MonoBehaviour {
 
-    private Vector2 dir;
+    private Vector3 dir;
 
     private new Rigidbody2D rigidbody2D;
+
+    //z軸の回転角度
+    float BBrad;
 
     //弾の速度設定
     public float speed = 2.0f;
@@ -14,9 +17,11 @@ public class EnemyBulletB : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         rigidbody2D = GetComponent<Rigidbody2D>();
-        //ランダムな方向に進む、距離で割って正規化している。速度の均一化。
-        dir = new Vector2(Random.Range(-0.5f,0.5f),-1.0f);
-        dir = dir / dir.magnitude;
+        //z軸の回転角度をラジアン化
+        BBrad = this.transform.eulerAngles.z * (Mathf.PI / 180.0f);
+        //角度BBradから、xとyの位置ベクトルに変換。
+        dir =  new Vector3(Mathf.Cos(BBrad),Mathf.Sin(BBrad),0);
+        //dir = dir / dir.magnitude;
     }
 	
 	// Update is called once per frame

@@ -70,7 +70,7 @@ public class Player : MonoBehaviour {
 
 
         //エネルギー処理
-        energy -= 0.5f;
+        energy -= 0.25f;
 
         if(energy <= 0){
             energy = 0;

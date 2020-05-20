@@ -155,6 +155,7 @@ public class comEnemy : MonoBehaviour {
                 break;
 
             case 'B':
+                //折り返しする時に弾を発射する。
                 if (EbTime >= TimeOut)
                 {
                     if (EBswitch)
@@ -169,6 +170,7 @@ public class comEnemy : MonoBehaviour {
                 break;
 
             case 'C':
+                //折り返しする時に弾を発射する。
                 if (EbTime >= TimeOut)
                 {
                     if (ECswitch)
