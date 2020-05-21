@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour {
 
@@ -34,8 +35,34 @@ public class Player : MonoBehaviour {
 
     private GameObject Instanceex;
 
+    //プレイヤーのスプライト
+    public Sprite CPsprite;
+
+    public Sprite RPsprite;
+
+    public Sprite LPsprite;
+
+    //プレイヤーのスプライト管理
+    private SpriteRenderer Prenderer;
+
+    //スプライトの色
+    private Color Pcolor;
+    //色変化の時間
+    private float cTimeOut = 1.0f;
+    private float rTimeOut = 0.5f;
+    private float cTime;
+
+    //エネルギーゲージを操作
+    GameObject EnergyGage;
+    Image EG;
+
     private void Start()
     {
+        EnergyGage = GameObject.Find("EnergyGage");
+
+        EG = EnergyGage.GetComponent<Image>();
+        
+        Prenderer = this.GetComponent<SpriteRenderer>();
 
         this.rigidbody2D = this.GetComponent<Rigidbody2D>();
 
@@ -55,6 +82,15 @@ public class Player : MonoBehaviour {
         // 右・左
         var x = Input.GetAxisRaw("Horizontal");
 
+        //移動に応じてスプライトを変更する。
+        if(x > 0){
+            Prenderer.sprite = RPsprite;
+        }else if(x < 0){
+            Prenderer.sprite = LPsprite;
+        }else{
+            Prenderer.sprite = CPsprite;
+        }
+
         // 上・下
         var y = Input.GetAxisRaw("Vertical");
 
@@ -68,17 +104,61 @@ public class Player : MonoBehaviour {
             GameObject instancepb = (GameObject)Instantiate(pbobj,Pposition,Quaternion.identity);
         }
 
+        PlayerEnergy();
 
+    }
+
+    private void PlayerEnergy()
+    {
         //エネルギー処理
         energy -= 0.25f;
-
-        if(energy <= 0){
+        //サイズ内に収める
+        if (energy <= 0)
+        {
             energy = 0;
+            PlayerDeth();
 
-        }else if(energy >= 1000){
+        }
+        else if (energy >= 1000)
+        {
             energy = 1000;
 
         }
+        else if (energy <= 300)
+        {
+            //200以下で危険信号
+            cTime += Time.deltaTime;
+
+            Pcolor = new Color(1.0f, 1.0f, 1.0f);
+
+            if (cTime >= cTimeOut)
+            {
+                //色変える 
+                Pcolor = new Color(1.0f, 0.3f, 0.3f);
+                //赤の状態終わる
+                if (cTime >= rTimeOut + cTimeOut) cTime = 0.0f;
+            }
+
+            //エネルギーが減るにつれて、点滅間隔を早くする。
+            if ((int)energy % 10 == 0)
+            {
+                if (cTimeOut >= 0.1)
+                {
+                    cTimeOut -= 0.1f;
+                }
+            }
+
+
+        }
+        else
+        {
+            //色もどす
+            Pcolor = new Color(1.0f, 1.0f, 1.0f);
+        }
+
+        //色を適用
+        Prenderer.color = Pcolor;
+        EG.color = Pcolor;
 
     }
 
@@ -112,21 +192,27 @@ public class Player : MonoBehaviour {
     }
 
 
+    void PlayerDeth(){
+
+        Instanceex = (GameObject)Instantiate(exobj, Pposition, Quaternion.identity);
+        Destroy(this.gameObject);
+
+    }
+
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         //敵の場合
         if(other.gameObject.tag == "enemy"){
 
-            Instanceex = (GameObject)Instantiate(exobj, Pposition, Quaternion.identity);
-            Destroy(this.gameObject);
+            PlayerDeth();
         }
 
         //敵の弾の場合
         if (other.gameObject.tag == "EB")
         {
 
-            Instanceex = (GameObject)Instantiate(exobj, Pposition, Quaternion.identity);
-            Destroy(this.gameObject);
+            PlayerDeth();
         }
 
 
