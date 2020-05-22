@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 212492850668822776}
   - component: {fileID: 95191215922972220}
   - component: {fileID: 61050336895671782}
+  - component: {fileID: 114436195715545866}
   m_Layer: 0
   m_Name: PlayerBullet2
   m_TagString: PB
@@ -58,6 +59,7 @@ GameObject:
   - component: {fileID: 212124461819219416}
   - component: {fileID: 95746756153093006}
   - component: {fileID: 61926349959344568}
+  - component: {fileID: 114355059652796120}
   m_Layer: 0
   m_Name: PlayerBullet1
   m_TagString: PB
@@ -212,6 +214,28 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114355059652796120
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1853614502653344}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0adf37d61c235411387ee494f1608ecd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114436195715545866
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1236227141400566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0adf37d61c235411387ee494f1608ecd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114727402453051258
 MonoBehaviour:
   m_ObjectHideFlags: 1

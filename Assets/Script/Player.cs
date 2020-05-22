@@ -7,6 +7,8 @@ public class Player : MonoBehaviour {
 
     //初期エネルギ＝
     public float energy = 1000.0f;
+    //初期残機数
+    public int stock = 3;
 
     // 移動スピード
     public float speed = 5;
@@ -52,9 +54,18 @@ public class Player : MonoBehaviour {
     private float rTimeOut = 0.5f;
     private float cTime;
 
+    //無敵時間
+    private float mTimeOut = 3.0f;
+    private float mTime = 0.0f;
+    private bool mTimenow = false;
+    //無敵時間中の色
+    private Color mcolor = new Color( 1.0f, 1.0f, 1.0f, 1.0f);
+
     //エネルギーゲージを操作
     GameObject EnergyGage;
     Image EG;
+
+    public bool start = false;
 
     private void Start()
     {
@@ -75,36 +86,59 @@ public class Player : MonoBehaviour {
         this.boundR = topRight.x - 0.2f;
         this.boundT = topRight.y - 0.2f;
         this.boundB = bottomLeft.y + 0.2f;
+
+        dir = new Vector2(0,1.0f);
     }
 
     private void Update()
     {
-        // 右・左
-        var x = Input.GetAxisRaw("Horizontal");
-
-        //移動に応じてスプライトを変更する。
-        if(x > 0){
-            Prenderer.sprite = RPsprite;
-        }else if(x < 0){
-            Prenderer.sprite = LPsprite;
-        }else{
-            Prenderer.sprite = CPsprite;
-        }
-
-        // 上・下
-        var y = Input.GetAxisRaw("Vertical");
-
-        this.dir = new Vector2(x, y);
 
         //自分の現在の位置得る
         Pposition = this.transform.position;
 
-        //弾発射プレイやーの位置にインスタンス化
-        if(Input.GetKeyDown("space")){
-            GameObject instancepb = (GameObject)Instantiate(pbobj,Pposition,Quaternion.identity);
+        if (start)
+        {
+            // 右・左
+            var x = Input.GetAxisRaw("Horizontal");
+
+            //移動に応じてスプライトを変更する。
+            if (x > 0)
+            {
+                Prenderer.sprite = RPsprite;
+            }
+            else if (x < 0)
+            {
+                Prenderer.sprite = LPsprite;
+            }
+            else
+            {
+                Prenderer.sprite = CPsprite;
+            }
+
+            // 上・下
+            var y = Input.GetAxisRaw("Vertical");
+
+            this.dir = new Vector2(x, y);
+
+
+            //弾発射プレイやーの位置にインスタンス化
+            if (Input.GetKeyDown("space"))
+            {
+                GameObject instancepb = (GameObject)Instantiate(pbobj, Pposition, Quaternion.identity);
+            }
+
+            PlayerEnergy();
+
+        }else{
+
+            rigidbody2D.velocity = dir * speed;
+            if(Pposition.y >= -2.0f){
+                start = true;
+            }
         }
 
-        PlayerEnergy();
+        //無敵時間
+        MutekiTime();
 
     }
 
@@ -153,74 +187,152 @@ public class Player : MonoBehaviour {
         else
         {
             //色もどす
-            Pcolor = new Color(1.0f, 1.0f, 1.0f);
+            Pcolor = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+            cTimeOut = 1.0f;
         }
 
         //色を適用
         Prenderer.color = Pcolor;
         EG.color = Pcolor;
 
+
+
+    }
+
+    private void MutekiTime(){
+
+        //無敵時間中
+        if(mTimenow){
+
+            //時間経過で無敵時間終了
+            mTime += Time.deltaTime;
+
+            if (mTimeOut <= mTime)
+            {
+                mTimenow = false;
+            }
+
+            //無敵時間中点滅処理
+            if ( (int)(mTime * 10)  % 2 == 0)
+            {
+                //透明度変える 
+                mcolor = new Color(1.0f, 1.0f, 1.0f, 0.0f);
+            }else{
+
+                //透明度変える 
+                mcolor = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+            }
+
+
+        }
+        else{
+            //無敵時間終わり
+            //時間リセット
+            mTime = 0.0f;
+
+            //透明度戻す
+            mcolor = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+
+        }
+
+        //無敵時間中の色を適用
+        Prenderer.color = mcolor;
+
+
+
     }
 
     private void FixedUpdate()
     {
-        // 現在の位置
-        var position = this.rigidbody2D.position;
+        if (start)
+        {
+            // 現在の位置
+            var position = this.rigidbody2D.position;
 
-        // 範囲制限を加える前の速度
-        var velocity = this.dir * this.speed;
+            // 範囲制限を加える前の速度
+            var velocity = this.dir * this.speed;
 
-        // 今回の物理状態更新での移動量
-        var deltaPosition = velocity * Time.deltaTime;
+            // 今回の物理状態更新での移動量
+            var deltaPosition = velocity * Time.deltaTime;
 
-        // 範囲制限を加えなかった場合の、予想される移動先
-        var nextPosition = position + deltaPosition;
+            // 範囲制限を加えなかった場合の、予想される移動先
+            var nextPosition = position + deltaPosition;
 
-        // 予想移動先の座標をクランプする
-        var clampedNextPosition = new Vector2(
-            Mathf.Clamp(nextPosition.x, this.boundL, this.boundR),
-            Mathf.Clamp(nextPosition.y, this.boundB, this.boundT));
+            // 予想移動先の座標をクランプする
+            var clampedNextPosition = new Vector2(
+                Mathf.Clamp(nextPosition.x, this.boundL, this.boundR),
+                Mathf.Clamp(nextPosition.y, this.boundB, this.boundT));
 
-        // クランプ後の移動先座標から移動量を求める
-        var clampedDeltaPosition = clampedNextPosition - position;
+            // クランプ後の移動先座標から移動量を求める
+            var clampedDeltaPosition = clampedNextPosition - position;
 
-        // クランプ後の移動量から速度を求める
-        var clampedVelocity = clampedDeltaPosition / Time.deltaTime;
+            // クランプ後の移動量から速度を求める
+            var clampedVelocity = clampedDeltaPosition / Time.deltaTime;
 
-        // クランプ後の速度を代入
-        this.rigidbody2D.velocity = clampedVelocity;
+            // クランプ後の速度を代入
+            this.rigidbody2D.velocity = clampedVelocity;
+
+        }
     }
 
 
     void PlayerDeth(){
 
         Instanceex = (GameObject)Instantiate(exobj, Pposition, Quaternion.identity);
-        Destroy(this.gameObject);
+
+        //残機がゼロ以下なら
+        if (stock <= 0)
+        {
+            stock = 0;
+            Destroy(this.gameObject);
+        }else{
+            //残機減らす
+            stock--;
+
+            //画面外に戻す
+            this.transform.position = new Vector3( 0, -6.0f, 0);
+            //進む方向を決める
+            dir = new Vector2(0, 0.5f);
+            //正面のスプライトにする
+            Prenderer.sprite = CPsprite;
+            //エネルギーリセット
+            energy = 500.0f;
+            //無敵時間反映
+            mTimenow = true;
+            //画面内に入る
+            start = false;
+        }
 
     }
 
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        //敵の場合
-        if(other.gameObject.tag == "enemy"){
-
-            PlayerDeth();
-        }
-
-        //敵の弾の場合
-        if (other.gameObject.tag == "EB")
+        if (!mTimenow)
         {
+            //敵の場合
+            if (other.gameObject.tag == "enemy")
+            {
 
-            PlayerDeth();
-        }
+                PlayerDeth();
+            }
+
+            //敵の弾の場合
+            if (other.gameObject.tag == "EB")
+            {
+
+                PlayerDeth();
+            }
 
 
-        //エナジーアイテムの場合
-        if (other.gameObject.tag == "energy"){
+            //エナジーアイテムの場合
+            if (other.gameObject.tag == "energy")
+            {
 
-            energy += 100;
-            Destroy(other.gameObject);
+                energy += 100;
+                Destroy(other.gameObject);
+            }
+
         }
     }
 

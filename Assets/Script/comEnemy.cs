@@ -132,7 +132,6 @@ public class comEnemy : MonoBehaviour {
             {
                 instanceeni = (GameObject)Instantiate(eniobj, Eposition, Quaternion.identity);
             }
-            Destroy(collision.gameObject);
             Destroy(this.gameObject);
 
         }

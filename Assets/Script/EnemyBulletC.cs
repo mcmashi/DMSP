@@ -19,9 +19,19 @@ public class EnemyBulletC : MonoBehaviour {
         rigidbody2D = GetComponent<Rigidbody2D>();
         Player = GameObject.Find("Player");
         //プレイヤーに向かうベクトルを生成して、距離で割って正規化している。速度の均一化。
-        dir = Player.transform.position - this.transform.position;
-        var distance = dir.magnitude;
-        dir = dir / distance;
+        if (Player == null)
+        {
+            dir = new Vector2(0, -1.0f);
+
+        }
+        else
+        {
+
+            dir = Player.transform.position - this.transform.position;
+            var distance = dir.magnitude;
+            dir = dir / distance;
+
+        }
     }
 	
 	// Update is called once per frame

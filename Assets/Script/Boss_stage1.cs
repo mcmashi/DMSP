@@ -48,13 +48,21 @@ public class Boss_stage1 : MonoBehaviour {
     //現在のボスの位置
     private Vector3 Bossposition;
 
+    //スコア
+    GameObject score;
+
+    Score Sscript;
+
     // Use this for initialization
     void Start () {
         rigidbody2D = this.GetComponent<Rigidbody2D>();
         //下に降りてくる向き
         dir = new Vector2( 0, -1.0f);
-		
-	}
+
+        score = GameObject.Find("Score");
+        Sscript = score.GetComponent<Score>();
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -116,6 +124,9 @@ public class Boss_stage1 : MonoBehaviour {
                 Instanceex = (GameObject)Instantiate(exobj, Bossposition + randtmp, Quaternion.identity);
 
             }
+            //スコア加算
+            Sscript.score += 1000;
+
             Destroy(this.gameObject);
 
         }

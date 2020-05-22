@@ -24,6 +24,11 @@ public class Stage1_Wave : MonoBehaviour {
 
     private GameObject Instanceboss;
 
+    //プレイヤーの状態を取得する。
+    GameObject Player;
+
+    Player pscript;
+
     //ウェーブの順番
     private int wcount = 0;
 
@@ -135,10 +140,21 @@ public class Stage1_Wave : MonoBehaviour {
         var top = mainCamera.ViewportToWorldPoint(new Vector3(0.0f, 1.0f, 0.0f));
         camx = top.x;
         camy = top.y;
+
+        Player = GameObject.Find("Player");
+        pscript = Player.GetComponent<Player>();
     }
 	
 	// Update is called once per frame
 	void Update () {
+
+        //プレイヤーの状態によって、ウェーブの進行を制御
+        if (pscript.start)
+        {
+            debugwave = false;
+        }else{
+            debugwave = true;
+        }
 
         //デバッグ中か判定
         if (!debugwave)

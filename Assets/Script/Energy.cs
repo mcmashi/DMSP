@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enerugy : MonoBehaviour {
+public class Energy : MonoBehaviour {
 
     public float speed = 5.0f;
 
