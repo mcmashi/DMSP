@@ -65,10 +65,16 @@ public class Player : MonoBehaviour {
     GameObject EnergyGage;
     Image EG;
 
+    //パワーアップ効果音
+    public AudioClip audiopowup;
+    AudioSource audiosource;
+
     public bool start = false;
 
     private void Start()
     {
+        audiosource = this.GetComponent<AudioSource>();
+
         EnergyGage = GameObject.Find("EnergyGage");
 
         EG = EnergyGage.GetComponent<Image>();
@@ -328,7 +334,7 @@ public class Player : MonoBehaviour {
             //エナジーアイテムの場合
             if (other.gameObject.tag == "energy")
             {
-
+                audiosource.PlayOneShot(audiopowup);
                 energy += 100;
                 Destroy(other.gameObject);
             }

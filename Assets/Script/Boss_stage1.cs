@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Boss_stage1 : MonoBehaviour {
 
@@ -53,8 +54,20 @@ public class Boss_stage1 : MonoBehaviour {
 
     Score Sscript;
 
+    //警告音
+    AudioSource audiosource;
+    //警告エフェクト
+    Image redimage;
+    float TimeOut = 1.0f;
+    float rTime;
+
     // Use this for initialization
     void Start () {
+
+        redimage = GameObject.Find("redzone").GetComponent<Image>();
+
+        audiosource = this.GetComponent<AudioSource>();
+
         rigidbody2D = this.GetComponent<Rigidbody2D>();
         //下に降りてくる向き
         dir = new Vector2( 0, -1.0f);
@@ -73,6 +86,19 @@ public class Boss_stage1 : MonoBehaviour {
         //ボスの動作
         if (!enter)
         {
+
+            //赤く点滅させる
+
+            rTime += Time.deltaTime;
+
+            if (rTime >= TimeOut)
+            {
+                redimage.color = new Color(0.5f, 0.0f, 0.0f, 0.5f);
+                rTime = 0.0f;
+            }else{
+                redimage.color = Color.Lerp(redimage.color, Color.clear, Time.deltaTime);
+            }
+
             //画面外から、所定の位置に移動すると次の動作になる。
             if (this.transform.position.y <= 2.3)
             {
@@ -80,6 +106,9 @@ public class Boss_stage1 : MonoBehaviour {
                 boTime = 0.0f;
                 repeat = true;
                 speed = 2.0f;
+                //警告音ミュート
+                audiosource.mute = true;
+                redimage.color = Color.clear;
             }
 
         }
