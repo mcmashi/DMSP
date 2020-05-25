@@ -10,6 +10,8 @@ public class Player : MonoBehaviour {
     //初期残機数
     public int stock = 3;
 
+    static public int Laststock = 3;
+
     // 移動スピード
     public float speed = 5;
 
@@ -71,6 +73,8 @@ public class Player : MonoBehaviour {
 
     public bool start = false;
 
+    public bool clear = false;
+
     private void Start()
     {
         audiosource = this.GetComponent<AudioSource>();
@@ -94,6 +98,9 @@ public class Player : MonoBehaviour {
         this.boundB = bottomLeft.y + 0.2f;
 
         dir = new Vector2(0,1.0f);
+
+            stock = Laststock;
+
     }
 
     private void Update()
@@ -102,7 +109,7 @@ public class Player : MonoBehaviour {
         //自分の現在の位置得る
         Pposition = this.transform.position;
 
-        if (start)
+        if (start && !clear)
         {
             // 右・左
             var x = Input.GetAxisRaw("Horizontal");
@@ -135,16 +142,35 @@ public class Player : MonoBehaviour {
 
             PlayerEnergy();
 
-        }else{
+
+        }
+        else if (clear)
+        {
+            //ステージクリア
+            rigidbody2D.velocity = dir * speed;
+
+            //進む方向を決める
+            dir = new Vector2(0, 1.0f);
+            //正面のスプライトにする
+            Prenderer.sprite = CPsprite;
+
+            Laststock = stock;
+        }
+        else if (!start)
+        {
 
             rigidbody2D.velocity = dir * speed;
-            if(Pposition.y >= -2.0f){
+            if (Pposition.y >= -2.0f)
+            {
                 start = true;
             }
+
+
         }
 
         //無敵時間
         MutekiTime();
+
 
     }
 
@@ -250,7 +276,7 @@ public class Player : MonoBehaviour {
 
     private void FixedUpdate()
     {
-        if (start)
+        if (start && !clear)
         {
             // 現在の位置
             var position = this.rigidbody2D.position;
@@ -307,6 +333,7 @@ public class Player : MonoBehaviour {
             mTimenow = true;
             //画面内に入る
             start = false;
+
         }
 
     }
@@ -314,7 +341,7 @@ public class Player : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (!mTimenow)
+        if (!mTimenow && !clear)
         {
             //敵の場合
             if (other.gameObject.tag == "enemy")

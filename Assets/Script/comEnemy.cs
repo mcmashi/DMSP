@@ -18,6 +18,10 @@ public class comEnemy : MonoBehaviour {
 
     public GameObject ebobjC;
 
+    public GameObject ebobjD;
+
+
+
     //アイテムドロップ確率設定
     public int enirand = 4;
 
@@ -34,6 +38,8 @@ public class comEnemy : MonoBehaviour {
     private GameObject instanceebB;
 
     private GameObject instanceebC;
+
+    private GameObject instanceebD;
 
     //弾生成の間隔設定
     public float TimeOut = 2.0f;
@@ -103,6 +109,10 @@ public class comEnemy : MonoBehaviour {
                 {
                     rigidbody2D.velocity = -speed * dir;
                 }
+                break;
+
+            case 'D':
+                rigidbody2D.velocity = speed * dir;
                 break;
 
         }
@@ -182,6 +192,22 @@ public class comEnemy : MonoBehaviour {
                             instanceebC = (GameObject)Instantiate(ebobjC, Eposition + enbvec, Quaternion.identity);
                         }
                     }
+                }
+                break;
+
+            case 'D':
+                //一定間隔で弾を打ち出す。
+                EbTime += Time.deltaTime;
+
+                if (EbTime >= TimeOut)
+                {
+                    Vector3 enbvec = new Vector3( -0.6f, 0, 0);
+                    for (int i = 0; i <= 3; i++)
+                    {
+                        enbvec.x += 0.2f;
+                        instanceebD = (GameObject)Instantiate(ebobjD, Eposition + enbvec, Quaternion.identity);
+                    }
+                    EbTime = 0.0f;
                 }
                 break;
 

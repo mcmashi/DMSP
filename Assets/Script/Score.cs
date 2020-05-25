@@ -9,9 +9,12 @@ public class Score : MonoBehaviour {
 
     public int score;
 
+    public static int AllScore;
+
 	// Use this for initialization
 	void Start () {
         scoretext = this.gameObject.GetComponent<Text>();
+        score = AllScore;
 	}
 	
 	// Update is called once per frame
@@ -19,5 +22,12 @@ public class Score : MonoBehaviour {
         //スコアを表示
         this.scoretext.text = "Score: " + score;
 
+    }
+
+    public void ScoreUpdate()
+    {
+        AllScore += score;
+
+        return;
     }
 }

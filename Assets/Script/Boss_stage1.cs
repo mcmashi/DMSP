@@ -61,6 +61,11 @@ public class Boss_stage1 : MonoBehaviour {
     float TimeOut = 1.0f;
     float rTime;
 
+    //ウェーブの状態を取得する。
+    GameObject Wave;
+
+    Stage1_Wave wscript;
+
     // Use this for initialization
     void Start () {
 
@@ -74,6 +79,9 @@ public class Boss_stage1 : MonoBehaviour {
 
         score = GameObject.Find("Score");
         Sscript = score.GetComponent<Score>();
+
+        Wave = GameObject.Find("Stage");
+        wscript = Wave.GetComponent<Stage1_Wave>();
 
     }
 	
@@ -155,7 +163,7 @@ public class Boss_stage1 : MonoBehaviour {
             }
             //スコア加算
             Sscript.score += 1000;
-
+            wscript.cler();
             Destroy(this.gameObject);
 
         }

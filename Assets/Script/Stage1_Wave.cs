@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Stage1_Wave : MonoBehaviour {
 
@@ -14,6 +15,8 @@ public class Stage1_Wave : MonoBehaviour {
 
     public GameObject enrobCobj;
 
+    public GameObject enrobDobj;
+
     public GameObject bossobj;
 
     private GameObject InstanceenrobA;
@@ -22,6 +25,8 @@ public class Stage1_Wave : MonoBehaviour {
 
     private GameObject InstanceenrobC;
 
+    private GameObject InstanceenrobD;
+
     private GameObject Instanceboss;
 
     //プレイヤーの状態を取得する。
@@ -29,10 +34,15 @@ public class Stage1_Wave : MonoBehaviour {
 
     Player pscript;
 
+    //スコアの状態反映
+    GameObject score;
+
+    Score Sscript;
+
     //ウェーブの順番
     private int wcount = 0;
 
-    //0:何も無い  1:雑魚敵A  2:雑魚敵B 3:雑魚的C
+    //0:何も無い  1:雑魚敵A  2:雑魚敵B 3:雑魚的C  4:雑魚的D
     //ウェーブ01
     //----------------------------
     private int[,] Wave1= new int[5,9]{
@@ -143,6 +153,9 @@ public class Stage1_Wave : MonoBehaviour {
 
         Player = GameObject.Find("Player");
         pscript = Player.GetComponent<Player>();
+
+        score = GameObject.Find("Score");
+        Sscript = score.GetComponent<Score>();
     }
 	
 	// Update is called once per frame
@@ -205,13 +218,39 @@ public class Stage1_Wave : MonoBehaviour {
 
                 }
 
-
-
             }
         }
 
+        if(pscript.clear == true)
+        {
+            //画面外でたら次のシーンへ
+            Transform ptransform = Player.GetComponent<Transform>();
+            if (ptransform.position.y > 6.0f)
+            {
+                Sscript.ScoreUpdate();
+                SceneManager.LoadScene("Stage2");
+
+            }
+
+        }
 		
 	}
+
+    public void cler(){
+
+        //ステージクリア判定
+
+        //ストック0以下ではない
+        if (pscript.stock >= 0)
+        {
+                pscript.clear = true;
+
+
+        }
+
+
+        return;
+    }
 
 
     int WaveDraw(int[,] wave){
@@ -239,6 +278,10 @@ public class Stage1_Wave : MonoBehaviour {
 
                     case 3:
                         InstanceenrobC = (GameObject)Instantiate(enrobCobj, new Vector3(spacex + camx + zeropoint, 5 - spacey + camy, 0), Quaternion.identity);
+                        break;
+
+                    case 4:
+                        InstanceenrobD = (GameObject)Instantiate(enrobDobj, new Vector3(spacex + camx + zeropoint, 5 - spacey + camy, 0), Quaternion.identity);
                         break;
 
                 }
