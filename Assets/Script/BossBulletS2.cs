@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BossBullet: MonoBehaviour {
+public class BossBulletS2: MonoBehaviour {
 
     private Vector3 dir;
 
@@ -17,10 +17,7 @@ public class BossBullet: MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         rigidbody2D = GetComponent<Rigidbody2D>();
-        //z軸の回転角度をラジアン化
-        BBrad = this.transform.eulerAngles.z * (Mathf.PI / 180.0f);
-        //角度BBradから、xとyの位置ベクトルに変換。
-        dir =  new Vector3(Mathf.Cos(BBrad),Mathf.Sin(BBrad),0);
+        dir = new Vector3( 0, -1.0f, 0);
         //dir = dir / dir.magnitude;
     }
 	
