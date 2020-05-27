@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Stage2_Wave : MonoBehaviour {
+public class Stage3_Wave : MonoBehaviour {
 
     //デバックモード
     public bool debugwave = false;
@@ -40,7 +40,7 @@ public class Stage2_Wave : MonoBehaviour {
     Score Sscript;
 
     //ウェーブの順番
-    private int wcount = 0;
+    private int wcount = 9;
 
     //0:何も無い  1:雑魚敵A  2:雑魚敵B 3:雑魚的C  4:雑魚的D
     //ウェーブ01

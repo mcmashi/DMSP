@@ -357,6 +357,13 @@ public class Player : MonoBehaviour {
                 PlayerDeth();
             }
 
+            //ラスボスの場合
+            if (other.gameObject.tag == "lastboss")
+            {
+
+                PlayerDeth();
+            }
+
 
             //エナジーアイテムの場合
             if (other.gameObject.tag == "energy")
