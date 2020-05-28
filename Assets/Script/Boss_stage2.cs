@@ -12,10 +12,10 @@ public class Boss_stage2 : MonoBehaviour {
 
     private float boTime = 0.0f;
 
-    //放射弾を打つ間隔
+    //列弾を打つ間隔
     public float CBBTimeOut = 0.1f;
 
-    //単発弾を打つタイミング
+    //放射弾を打つタイミング
     private int BBcount = 0;
 
     //ボスの動くスピード：初期値は画面内に入るまでのスピード
@@ -84,9 +84,9 @@ public class Boss_stage2 : MonoBehaviour {
         wscript = Wave.GetComponent<Stage2_Wave>();
 
     }
-	
-	// Update is called once per frame
-	void Update () {
+    
+    // Update is called once per frame
+    void Update () {
 
         //現在の位置代入
         Bossposition = this.transform.position;
@@ -150,7 +150,7 @@ public class Boss_stage2 : MonoBehaviour {
         }
 
         //時間計測
-                boTime += Time.deltaTime; 
+        boTime += Time.deltaTime; 
 
         //死亡時の処理
         if(BossHP <= 0){
@@ -171,6 +171,7 @@ public class Boss_stage2 : MonoBehaviour {
         //弾発射
         //列弾
         if(enter && boTime >= CBBTimeOut){
+
             float bbrx = -4.0f;
             for (int i = 1; i <= 10;i++)
             {

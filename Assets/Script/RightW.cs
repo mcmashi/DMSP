@@ -8,10 +8,14 @@ public class RightW : MonoBehaviour {
 
     public bool brokeR = false;
 
+    [SerializeField] GameObject Boss;
+
+    Boss_stage3 sbo;
+
     // Use this for initialization
     void Start()
     {
-
+        sbo = Boss.GetComponent<Boss_stage3>();
     }
 
     // Update is called once per frame
@@ -28,7 +32,8 @@ public class RightW : MonoBehaviour {
     {
         if (other.gameObject.tag == "PB")
         {
-            RHP--;
+            if (sbo.enter) RHP--;
+            Destroy(other.gameObject);
         }
     }
 }

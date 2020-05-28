@@ -8,12 +8,12 @@ public class Boss_stage3 : MonoBehaviour {
     new Rigidbody2D rigidbody2D;
 
     //ボスが所定の位置に着いたか
-    private bool enter = false;
+    public bool enter = false;
 
     private float boTime = 0.0f;
 
     //放射弾を打つ間隔
-    public float CBBTimeOut = 1.0f;
+    public float CBBTimeOut = 0.4f;
 
     //単発弾を打つタイミング
     private int BBcount = 0;
@@ -39,6 +39,10 @@ public class Boss_stage3 : MonoBehaviour {
 
     public GameObject BBHobj;
 
+    public GameObject BBeam1;
+
+    public GameObject BBeam2;
+
     //そのインスタンス
     private GameObject Instanceex;
 
@@ -46,8 +50,12 @@ public class Boss_stage3 : MonoBehaviour {
 
     private GameObject Instancebbh;
 
+    private GameObject Instancebbm1;
+
+    private GameObject Instancebbm2;
+
     //現在のボスの位置
-    private Vector3 Bossposition;
+    public Vector3 Bossposition;
 
     //スコア
     GameObject score;
@@ -71,11 +79,12 @@ public class Boss_stage3 : MonoBehaviour {
     int dbw;
 
     //ウィングの状態
-    GameObject LW;
-    GameObject RW;
+     GameObject LW;
+     GameObject RW;
 
-    LeftW lwscript;
-    RightW rwscript;
+
+     LeftW lwscript;
+     RightW rwscript;
 
 
     // Use this for initialization
@@ -187,7 +196,7 @@ public class Boss_stage3 : MonoBehaviour {
 
             }
             //スコア加算
-            Sscript.score += 1000;
+            Sscript.score += 10000;
             wscript.cler();
             Destroy(this.gameObject);
 
@@ -214,14 +223,47 @@ public class Boss_stage3 : MonoBehaviour {
             boTime = 0.0f;
             BBcount++;
         }
-        //放射弾発射
-        if(enter && BBcount == 1){
+        //ビーム砲発射
+        if(enter && BBcount >= 20){
 
-            float tmpeuler = 40.0f;
-            for (int i = 1; i <= 9; i++)
+            if (lwscript.brokeL == false)
             {
-                Instancebbh = (GameObject)Instantiate(BBHobj, Bossposition, Quaternion.Euler(0, 0, tmpeuler * i));
+
+
+                Instancebbm1 = (GameObject)Instantiate(BBeam1, Bossposition + new Vector3(-0.46f, -0.5f, 0), Quaternion.identity);
+
+                Instancebbm1.transform.parent = this.transform;
+
+
+
             }
+
+            if(rwscript.brokeR == false){
+                Instancebbm2 = (GameObject)Instantiate(BBeam2, Bossposition + new Vector3(0.85f, -0.5f, 0), Quaternion.identity);
+
+                Instancebbm2.transform.parent = this.transform;
+
+
+            }
+
+            //第二形態
+            if(dbw == 3){
+                float bbrx = -4.0f;
+                for (int i = 1; i <= 10; i++)
+                {
+                    float bbry = -0.4f;
+                    for (int j = 1; j <= 4; j++)
+                    {
+                        Instancebbr = (GameObject)Instantiate(BBRobj, Bossposition + new Vector3(bbrx, bbry, 0), Quaternion.identity);
+                        bbry += 0.2f;
+
+                    }
+                    bbrx += 0.8f;
+                }
+
+            }
+
+
             BBcount = 0;
         }
 
@@ -233,18 +275,22 @@ public class Boss_stage3 : MonoBehaviour {
         //アニメーションを変更する
 
 
-        if (lwscript.brokeL == true)
+        if (lwscript.brokeL == true && dbw == 0)
         {
 
             dbw = 1;
+            Instanceex = (GameObject)Instantiate(exobj, Bossposition + new Vector3(-0.8f,0.6f,0), Quaternion.identity);
 
         }
-        if (rwscript.brokeR == true)
+
+        if (rwscript.brokeR == true && (dbw == 0 || dbw == 1))
         {
 
             dbw = 2;
+            Instanceex = (GameObject)Instantiate(exobj, Bossposition + new Vector3(0.8f, 0.6f, 0), Quaternion.identity);
 
         }
+
         if (lwscript.brokeL == true && rwscript.brokeR == true)
         {
 
@@ -263,7 +309,12 @@ public class Boss_stage3 : MonoBehaviour {
         if(other.gameObject.tag == "PB"){
 
             //所定の位置に着いてからダメージ判定
-            if(enter && dbw == 3)BossHP--;
+            if (enter && dbw == 3)
+            {
+                Destroy(other.gameObject);
+                BossHP--;
+
+            }
         }
 
     }

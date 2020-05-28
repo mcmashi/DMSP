@@ -8,8 +8,13 @@ public class LeftW : MonoBehaviour {
 
     public bool brokeL = false;
 
+    [SerializeField] GameObject Boss;
+
+    Boss_stage3 sbo;
+
 	// Use this for initialization
 	void Start () {
+        sbo = Boss.GetComponent<Boss_stage3>();
 		
 	}
 	
@@ -26,7 +31,8 @@ public class LeftW : MonoBehaviour {
     {
 
         if(other.gameObject.tag =="PB"){
-            LHP--;
+            if(sbo.enter)LHP--;
+            Destroy(other.gameObject);
         }
     }
 

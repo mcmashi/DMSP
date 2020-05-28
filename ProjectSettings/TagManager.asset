@@ -9,6 +9,7 @@ TagManager:
   - energy
   - EB
   - lastboss
+  - week
   layers:
   - Default
   - TransparentFX

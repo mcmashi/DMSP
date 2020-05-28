@@ -30,5 +30,7 @@ public class PlayerBulletSub : MonoBehaviour {
             Destroy(this.gameObject);
 
         }
+
+
     }
 }
