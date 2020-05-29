@@ -22,7 +22,7 @@ public class GameOver : MonoBehaviour {
             pletext.gameObject.SetActive(true);
 
             //エンター押すと
-            if(Input.GetKeyDown(KeyCode.Space)){
+            if(Input.GetKeyDown(KeyCode.M)){
                 SceneManager.LoadScene("Title");
 
             }

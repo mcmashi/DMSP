@@ -228,7 +228,7 @@ public class Stage3_Wave : MonoBehaviour {
             if (ptransform.position.y > 6.0f)
             {
                 Sscript.ScoreUpdate();
-                SceneManager.LoadScene("Stage3");
+                SceneManager.LoadScene("Result");
 
             }
 

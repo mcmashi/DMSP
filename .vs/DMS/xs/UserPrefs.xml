@@ -1,6 +1,6 @@
 ﻿<Properties StartupConfiguration="{17C4F71B-86C8-3190-030D-600DB65F0AF0}|">
   <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="Unity.Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Script/Stage2_Wave.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Script/Size.cs">
     <Files>
       <File FileName="Assets/Script/Player.cs" Line="361" Column="50" />
       <File FileName="Assets/Script/Scroll.cs" Line="21" Column="62" />
@@ -14,9 +14,9 @@
       <File FileName="Assets/Script/EnemyBulletC.cs" Line="24" Column="35" />
       <File FileName="Assets/Script/Boss_stage1.cs" Line="13" Column="21" />
       <File FileName="Assets/Script/Gstart.cs" Line="20" Column="25" />
-      <File FileName="Assets/Script/GameOver.cs" Line="28" Column="14" />
+      <File FileName="Assets/Script/GameOver.cs" Line="3" Column="19" />
       <File FileName="Assets/Script/PlayerBulletSub.cs" Line="34" Column="1" />
-      <File FileName="Assets/Script/Score.cs" Line="31" Column="16" />
+      <File FileName="Assets/Script/Score.cs" Line="28" Column="62" />
       <File FileName="Assets/Script/Stock.cs" Line="27" Column="1" />
       <File FileName="Assets/Script/Energy.cs" Line="11" Column="39" />
       <File FileName="Assets/Script/Title.cs" Line="25" Column="42" />
@@ -24,12 +24,15 @@
       <File FileName="Assets/Script/BossBulletS1.cs" Line="7" Column="25" />
       <File FileName="Assets/Script/Boss_stage2.cs" Line="217" Column="1" />
       <File FileName="Assets/Script/BossBulletS2.cs" Line="24" Column="36" />
-      <File FileName="Assets/Script/Stage3_Wave.cs" Line="119" Column="28" />
+      <File FileName="Assets/Script/Stage3_Wave.cs" Line="230" Column="39" />
       <File FileName="Assets/Script/Boss_stage3.cs" Line="200" Column="28" />
       <File FileName="Assets/Script/LeftW.cs" Line="35" Column="39" />
       <File FileName="Assets/Script/RightW.cs" Line="37" Column="10" />
       <File FileName="Assets/Script/Beam.cs" Line="40" Column="34" />
       <File FileName="Assets/Script/Stage2_Wave.cs" Line="24" Column="1" />
+      <File FileName="Assets/Script/Result.cs" Line="22" Column="9" />
+      <File FileName="Assets/Script/END.cs" Line="8" Column="11" />
+      <File FileName="Assets/Script/Size.cs" Line="12" Column="6" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />

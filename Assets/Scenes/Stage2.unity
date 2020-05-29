@@ -1213,7 +1213,7 @@ GameObject:
   - component: {fileID: 1576252570}
   - component: {fileID: 1576252569}
   m_Layer: 5
-  m_Name: Please Enter
+  m_Name: Please M Key
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1269,7 +1269,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Please Enter
+  m_Text: Please M Key
 --- !u!222 &1576252570
 CanvasRenderer:
   m_ObjectHideFlags: 0
