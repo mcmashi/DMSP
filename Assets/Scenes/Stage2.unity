@@ -582,7 +582,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   energy: 1000
-  stock: 3
+  stock: 5
   speed: 5
   pbobj: {fileID: 1632104992330228, guid: c67c650ee65f743be9ec3993670ac998, type: 2}
   exobj: {fileID: 1361803908609156, guid: 837e242ed24d54ab4955ab8bc792b753, type: 2}

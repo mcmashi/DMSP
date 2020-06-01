@@ -115,7 +115,7 @@ MonoBehaviour:
   ebobjB: {fileID: 1246207763974052, guid: 056a582ae69764128928c48444303585, type: 2}
   ebobjC: {fileID: 1246207763974052, guid: e8a9ca28c2a1045f4bac436cf996b2f8, type: 2}
   ebobjD: {fileID: 1246207763974052, guid: 6e4c4b6c38cba47f8adacf13af11a3a4, type: 2}
-  enirand: 5
+  enirand: 10
   TimeOut: 1
   speed: 1
 --- !u!212 &212422395184776192

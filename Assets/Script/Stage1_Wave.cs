@@ -39,6 +39,10 @@ public class Stage1_Wave : MonoBehaviour {
 
     Score Sscript;
 
+    //リザルト時間
+    float progressTime;
+    float resultTime = 4.0f;
+
     //ウェーブの順番
     private int wcount = 0;
 
@@ -227,8 +231,7 @@ public class Stage1_Wave : MonoBehaviour {
             Transform ptransform = Player.GetComponent<Transform>();
             if (ptransform.position.y > 6.0f)
             {
-                Sscript.ScoreUpdate();
-                SceneManager.LoadScene("Stage2");
+                StageResult();
 
             }
 
@@ -292,5 +295,19 @@ public class Stage1_Wave : MonoBehaviour {
 
 
         return 0;
+    }
+
+
+    void StageResult(){
+
+        progressTime += Time.deltaTime;
+
+        if(progressTime >= resultTime){
+
+            Sscript.ScoreUpdate();
+            SceneManager.LoadScene("Stage2");
+
+        }
+
     }
 }

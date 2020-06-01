@@ -2,15 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour {
 
     //初期エネルギ＝
     public float energy = 1000.0f;
     //初期残機数
-    public int stock = 3;
+    public int stock = 5;
 
-    static public int Laststock = 3;
+    static public int Laststock = 5;
 
     // 移動スピード
     public float speed = 5;
@@ -77,15 +78,27 @@ public class Player : MonoBehaviour {
 
     private void Start()
     {
-        audiosource = this.GetComponent<AudioSource>();
+        if (SceneManager.GetActiveScene().name == "Title")
+        {
+            //タイトル画面で残機数初期化
 
-        EnergyGage = GameObject.Find("EnergyGage");
+            stock = 5;
+            Laststock = 5;
+        }
+        else
+        {
 
-        EG = EnergyGage.GetComponent<Image>();
-        
-        Prenderer = this.GetComponent<SpriteRenderer>();
+            audiosource = this.GetComponent<AudioSource>();
 
-        this.rigidbody2D = this.GetComponent<Rigidbody2D>();
+            EnergyGage = GameObject.Find("EnergyGage");
+
+            EG = EnergyGage.GetComponent<Image>();
+
+            Prenderer = this.GetComponent<SpriteRenderer>();
+
+            this.rigidbody2D = this.GetComponent<Rigidbody2D>();
+
+        }
 
         // あらかじめ、画面上下左右の縁がワールド空間上でどこに位置するか調べておく
         var mainCamera = Camera.main;
@@ -101,10 +114,17 @@ public class Player : MonoBehaviour {
 
             stock = Laststock;
 
+
+
     }
 
     private void Update()
     {
+
+        if (SceneManager.GetActiveScene().name == "Title") return;
+
+        //無敵時間
+        MutekiTime();
 
         //自分の現在の位置得る
         Pposition = this.transform.position;
@@ -168,8 +188,7 @@ public class Player : MonoBehaviour {
 
         }
 
-        //無敵時間
-        MutekiTime();
+
 
 
     }
