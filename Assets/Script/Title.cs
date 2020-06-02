@@ -29,4 +29,8 @@ public class Title : MonoBehaviour {
         TutorialPanel.SetActive(false);
         MainPanel.SetActive(true);
     }
+
+    public void ExitGame(){
+        UnityEngine.Application.Quit();
+    }
 }

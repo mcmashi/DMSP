@@ -189,7 +189,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 4843eda37a0b942b3b5a739ae64c2137, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -344,6 +344,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 7
+  balletse: {fileID: 8300000, guid: 4843eda37a0b942b3b5a739ae64c2137, type: 3}
 --- !u!212 &212124461819219416
 SpriteRenderer:
   m_ObjectHideFlags: 1

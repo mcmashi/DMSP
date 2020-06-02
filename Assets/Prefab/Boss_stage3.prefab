@@ -356,7 +356,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enter: 0
   CBBTimeOut: 0.4
-  BossHP: 300
+  BossHP: 250
   exobj: {fileID: 1361803908609156, guid: 837e242ed24d54ab4955ab8bc792b753, type: 2}
   BBRobj: {fileID: 1246207763974052, guid: 365abffdf3b5844a7afb2e2d138498cd, type: 2}
   BBHobj: {fileID: 1246207763974052, guid: 0ce811bec9f5d467b9f2afd6db3c8a15, type: 2}

@@ -7,7 +7,7 @@ public class Size {
     [RuntimeInitializeOnLoadMethod]
     static void OnRuntimeMethodLoad()
     {
-        Screen.SetResolution(504, 896, false, 60);
+        Screen.SetResolution(504, 896, true, 60);
 
     }
 }

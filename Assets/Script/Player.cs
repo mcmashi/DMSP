@@ -347,7 +347,7 @@ public class Player : MonoBehaviour {
             //正面のスプライトにする
             Prenderer.sprite = CPsprite;
             //エネルギーリセット
-            energy = 500.0f;
+            energy = 800.0f;
             //無敵時間反映
             mTimenow = true;
             //画面内に入る
