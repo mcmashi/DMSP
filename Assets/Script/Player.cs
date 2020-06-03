@@ -68,8 +68,9 @@ public class Player : MonoBehaviour {
     GameObject EnergyGage;
     Image EG;
 
-    //パワーアップ効果音
+    //パワーアップ効果音と射撃音
     public AudioClip audiopowup;
+    public AudioClip audioshot;
     AudioSource audiosource;
 
     public bool start = false;
@@ -154,11 +155,7 @@ public class Player : MonoBehaviour {
             this.dir = new Vector2(x, y);
 
 
-            //弾発射プレイやーの位置にインスタンス化
-            if (Input.GetKeyDown("space"))
-            {
-                GameObject instancepb = (GameObject)Instantiate(pbobj, Pposition, Quaternion.identity);
-            }
+            PShot();
 
             PlayerEnergy();
 
@@ -188,6 +185,19 @@ public class Player : MonoBehaviour {
 
         }
 
+
+
+
+    }
+
+    void PShot(){
+
+        //弾発射プレイやーの位置にインスタンス化
+        if (Input.GetKeyDown("space"))
+        {
+            GameObject instancepb = (GameObject)Instantiate(pbobj, Pposition, Quaternion.identity);
+            audiosource.PlayOneShot(audioshot,0.8f);
+        }
 
 
 

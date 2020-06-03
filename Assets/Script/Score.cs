@@ -38,9 +38,12 @@ public class Score : MonoBehaviour {
 
         //もし最終結果のシーンなら
         if(SceneManager.GetActiveScene().name == "Result"){
-            //合計スコア表示
-            score += 10;
-            score = Mathf.Min(score, AllScore);
+            for (int i = 0; i < 10;i++)
+            {
+                //合計スコア表示
+                score += 10;
+                score = Mathf.Min(score, AllScore);
+            }
         }
 
 
