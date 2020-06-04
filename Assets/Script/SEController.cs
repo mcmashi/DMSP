@@ -24,7 +24,7 @@ public class SEController : MonoBehaviour {
 
     public void exSE(){
 
-        audiosource.PlayOneShot(audioex, 0.6f);
+        audiosource.PlayOneShot(audioex, 0.4f);
 
     }
 }

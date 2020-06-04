@@ -1,10 +1,10 @@
 ﻿<Properties StartupConfiguration="{17C4F71B-86C8-3190-030D-600DB65F0AF0}|">
   <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="Unity.Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Script/explosion.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Script/SEController.cs">
     <Files>
       <File FileName="Assets/Script/Player.cs" Line="196" Column="39" />
       <File FileName="Assets/Script/Scroll.cs" Line="21" Column="62" />
-      <File FileName="Assets/Script/PlayerBallet.cs" Line="14" Column="5" />
+      <File FileName="Assets/Script/PlayerBallet.cs" Line="14" Column="1" />
       <File FileName="Assets/Script/comEnemy.cs" Line="205" Column="49" />
       <File FileName="Assets/Script/explosion.cs" Line="19" Column="26" />
       <File FileName="Assets/Script/EnergyGage.cs" Line="28" Column="64" />
@@ -32,7 +32,7 @@
       <File FileName="Assets/Script/Stage2_Wave.cs" Line="233" Column="14" />
       <File FileName="Assets/Script/END.cs" Line="8" Column="11" />
       <File FileName="Assets/Script/Size.cs" Line="7" Column="36" />
-      <File FileName="Assets/Script/SEController.cs" Line="26" Column="9" />
+      <File FileName="Assets/Script/SEController.cs" Line="27" Column="45" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
