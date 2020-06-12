@@ -7,7 +7,7 @@ public class GameOver : MonoBehaviour {
 
     public GameObject gmovtext;
 
-    public GameObject pletext;
+    public GameObject bmbutton;
 
 	// Use this for initialization
 	void Start () {
@@ -19,7 +19,7 @@ public class GameOver : MonoBehaviour {
         //プレイヤーが破壊されたら
         if(!GameObject.Find("Player")){
             gmovtext.gameObject.SetActive(true);
-            pletext.gameObject.SetActive(true);
+            bmbutton.gameObject.SetActive(true);
 
             //エンター押すと
             if(Input.GetKeyDown(KeyCode.M)){

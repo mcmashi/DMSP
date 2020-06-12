@@ -2,7 +2,7 @@
   <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="Unity.Editor" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Script/Player.cs">
     <Files>
-      <File FileName="Assets/Script/Player.cs" Line="133" Column="29" />
+      <File FileName="Assets/Script/Player.cs" Line="211" Column="43" />
       <File FileName="Assets/Script/Scroll.cs" Line="21" Column="62" />
       <File FileName="Assets/Script/PlayerBallet.cs" Line="14" Column="1" />
       <File FileName="Assets/Script/comEnemy.cs" Line="205" Column="49" />
@@ -14,7 +14,7 @@
       <File FileName="Assets/Script/EnemyBulletC.cs" Line="24" Column="35" />
       <File FileName="Assets/Script/Boss_stage1.cs" Line="13" Column="21" />
       <File FileName="Assets/Script/Gstart.cs" Line="20" Column="25" />
-      <File FileName="Assets/Script/GameOver.cs" Line="3" Column="19" />
+      <File FileName="Assets/Script/GameOver.cs" Line="22" Column="1" />
       <File FileName="Assets/Script/PlayerBulletSub.cs" Line="34" Column="1" />
       <File FileName="Assets/Script/Score.cs" Line="41" Column="39" />
       <File FileName="Assets/Script/Stock.cs" Line="27" Column="1" />

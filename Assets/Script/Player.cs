@@ -4,7 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class Player : MonoBehaviour {
+public class Player : MonoBehaviour
+{
 
     //初期エネルギ＝
     public float energy = 1000.0f;
@@ -62,7 +63,7 @@ public class Player : MonoBehaviour {
     private float mTime = 0.0f;
     private bool mTimenow = false;
     //無敵時間中の色
-    private Color mcolor = new Color( 1.0f, 1.0f, 1.0f, 1.0f);
+    private Color mcolor = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
     //エネルギーゲージを操作
     GameObject EnergyGage;
@@ -72,6 +73,13 @@ public class Player : MonoBehaviour {
     public AudioClip audiopowup;
     public AudioClip audioshot;
     AudioSource audiosource;
+
+    //弾発射感覚
+    float balletTime = 0.0f;
+    float balletLimitTime = 0.2f;
+
+    //タッチし始めた位置
+    Vector2 ptouch;
 
     public bool start = false;
 
@@ -111,9 +119,9 @@ public class Player : MonoBehaviour {
         this.boundT = topRight.y - 0.2f;
         this.boundB = bottomLeft.y + 0.2f;
 
-        dir = new Vector2(0,1.0f);
+        dir = new Vector2(0, 1.0f);
 
-            stock = Laststock;
+        stock = Laststock;
 
 
 
@@ -150,36 +158,76 @@ public class Player : MonoBehaviour {
 
     }
 
-    void IsPlay(){//操作可能
+    void IsPlay()
+    {//操作可能
 
-        // 右・左
-        var x = Input.GetAxisRaw("Horizontal");
+        //タッチ情報取得
+        Touch touch;
+        if (Input.touchCount > 0)
+        {
+            touch = Input.GetTouch(0);
 
-        //移動に応じてスプライトを変更する。
-        if (x > 0)
-        {
-            Prenderer.sprite = RPsprite;
-        }
-        else if (x < 0)
-        {
-            Prenderer.sprite = LPsprite;
-        }
-        else
-        {
+
+            //タッチしているか
+            switch (touch.phase)
+            {
+                case TouchPhase.Began:
+                    ptouch = touch.position;
+
+                    break;
+
+
+                case TouchPhase.Moved:
+
+                    this.dir = GetPlayerMove(touch);
+
+
+                    //移動に応じてスプライトを変更する。
+                    if (dir.x > 0)
+                    {
+                        Prenderer.sprite = RPsprite;
+                    }
+                    else if (dir.x < 0)
+                    {
+                        Prenderer.sprite = LPsprite;
+                    }
+                    else
+                    {
+                        Prenderer.sprite = CPsprite;
+                    }
+
+                    break;
+
+                default:
+
+                    dir = new Vector2(0.0f,0.0f);
+                    Prenderer.sprite = CPsprite;
+
+                    break;
+
+
+            }
+        }else{
+            dir = new Vector2(0.0f, 0.0f);
             Prenderer.sprite = CPsprite;
         }
 
-        // 上・下
-        var y = Input.GetAxisRaw("Vertical");
 
-        this.dir = new Vector2(x, y);
-
-
+        //0.5秒ごとに呼び出す
         PShot();
 
         PlayerEnergy();
 
     }
+
+    Vector2 GetPlayerMove(Touch touch){
+        Vector2 ptdir;
+
+        ptdir = -(ptouch - touch.position)/500.0f;
+
+        return ptdir;
+    }
+
 
     void IsClear(){//ステージクリア
 
@@ -208,11 +256,15 @@ public class Player : MonoBehaviour {
 
     void PShot(){
 
-        //弾発射プレイやーの位置にインスタンス化
-        if (Input.GetKeyDown("space"))
+        balletTime += Time.deltaTime;
+
+        if (balletTime >= balletLimitTime)
         {
+            //弾発射プレイやーの位置にインスタンス化
             GameObject instancepb = (GameObject)Instantiate(pbobj, Pposition, Quaternion.identity);
-            audiosource.PlayOneShot(audioshot,0.8f);
+            audiosource.PlayOneShot(audioshot, 0.4f);
+            balletTime = 0.0f;
+
         }
 
 
