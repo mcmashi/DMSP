@@ -130,62 +130,78 @@ public class Player : MonoBehaviour {
         //自分の現在の位置得る
         Pposition = this.transform.position;
 
+
         if (start && !clear)
         {
-            // 右・左
-            var x = Input.GetAxisRaw("Horizontal");
-
-            //移動に応じてスプライトを変更する。
-            if (x > 0)
-            {
-                Prenderer.sprite = RPsprite;
-            }
-            else if (x < 0)
-            {
-                Prenderer.sprite = LPsprite;
-            }
-            else
-            {
-                Prenderer.sprite = CPsprite;
-            }
-
-            // 上・下
-            var y = Input.GetAxisRaw("Vertical");
-
-            this.dir = new Vector2(x, y);
-
-
-            PShot();
-
-            PlayerEnergy();
-
+            IsPlay();
 
         }
         else if (clear)
         {
-            //ステージクリア
-            rigidbody2D.velocity = dir * speed;
-
-            //進む方向を決める
-            dir = new Vector2(0, 1.0f);
-            //正面のスプライトにする
-            Prenderer.sprite = CPsprite;
-
-            Laststock = stock;
+            IsClear();
         }
         else if (!start)
         {
-
-            rigidbody2D.velocity = dir * speed;
-            if (Pposition.y >= -2.0f)
-            {
-                start = true;
-            }
-
-
+            IsStart();
         }
 
 
+
+
+    }
+
+    void IsPlay(){//操作可能
+
+        // 右・左
+        var x = Input.GetAxisRaw("Horizontal");
+
+        //移動に応じてスプライトを変更する。
+        if (x > 0)
+        {
+            Prenderer.sprite = RPsprite;
+        }
+        else if (x < 0)
+        {
+            Prenderer.sprite = LPsprite;
+        }
+        else
+        {
+            Prenderer.sprite = CPsprite;
+        }
+
+        // 上・下
+        var y = Input.GetAxisRaw("Vertical");
+
+        this.dir = new Vector2(x, y);
+
+
+        PShot();
+
+        PlayerEnergy();
+
+    }
+
+    void IsClear(){//ステージクリア
+
+        rigidbody2D.velocity = dir * speed;
+
+        //進む方向を決める
+        dir = new Vector2(0, 1.0f);
+        //正面のスプライトにする
+        Prenderer.sprite = CPsprite;
+
+        Laststock = stock;
+
+
+    }
+
+    void IsStart(){//ステージスタート
+
+        rigidbody2D.velocity = dir * speed;
+        if (Pposition.y >= -2.0f)
+        {
+            start = true;
+        }
 
 
     }
