@@ -264,7 +264,7 @@ public class Stage2_Wave : MonoBehaviour {
             for (int j = 0; j < 9; j++)
             {
                 //最初の一体目のx座標が左端の座標+zeropointになる。
-                float zeropoint = 0.4f;
+                float zeropoint = 0.1f;
                 //space分x座標をずらして敵を配置。
                 float spacex = j * 0.6f;
                 //space分y座標をずらして敵を配置。

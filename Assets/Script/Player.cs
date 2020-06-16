@@ -225,6 +225,25 @@ public class Player : MonoBehaviour
 
         ptdir = -(ptouch - touch.position)/500.0f;
 
+        if (ptdir.x > 0)
+        {
+            ptdir.x = Mathf.Min(ptdir.x , 1.0f);
+        }else if(ptdir.x < 0){
+            ptdir.x = Mathf.Max(ptdir.x, -1.0f);
+
+        }
+
+        if (ptdir.y > 0)
+        {
+            ptdir.y = Mathf.Min(ptdir.y, 1.0f);
+        }
+        else if (ptdir.y < 0)
+        {
+            ptdir.y = Mathf.Max(ptdir.y, -1.0f);
+
+        }
+
+
         return ptdir;
     }
 
