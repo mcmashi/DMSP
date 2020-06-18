@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 61889297135958126}
   - component: {fileID: 82530822350971992}
   - component: {fileID: 114981885586867978}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Boss_stage3
   m_TagString: lastboss
   m_Icon: {fileID: 0}
@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 4509133532072426}
   - component: {fileID: 61571118714415104}
   - component: {fileID: 114906812298007060}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: LPoint
   m_TagString: week
   m_Icon: {fileID: 0}
@@ -59,7 +59,7 @@ GameObject:
   - component: {fileID: 4974458246520600}
   - component: {fileID: 61494336423227264}
   - component: {fileID: 114336104443702778}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RPoint
   m_TagString: week
   m_Icon: {fileID: 0}

@@ -1,15 +1,15 @@
 ﻿<Properties StartupConfiguration="{17C4F71B-86C8-3190-030D-600DB65F0AF0}|">
   <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="Unity.Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Script/Pad.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Script/Stage1_Wave.cs">
     <Files>
-      <File FileName="Assets/Script/Player.cs" Line="213" Column="10" />
+      <File FileName="Assets/Script/Player.cs" Line="1" Column="1" />
       <File FileName="Assets/Script/Scroll.cs" Line="21" Column="62" />
       <File FileName="Assets/Script/PlayerBallet.cs" Line="14" Column="1" />
       <File FileName="Assets/Script/comEnemy.cs" Line="205" Column="49" />
       <File FileName="Assets/Script/explosion.cs" Line="19" Column="26" />
       <File FileName="Assets/Script/EnergyGage.cs" Line="28" Column="64" />
       <File FileName="Assets/Script/EnemyBulletA.cs" Line="24" Column="36" />
-      <File FileName="Assets/Script/Stage1_Wave.cs" Line="264" Column="40" />
+      <File FileName="Assets/Script/Stage1_Wave.cs" Line="267" Column="38" />
       <File FileName="Assets/Script/EnemyBulletB.cs" Line="24" Column="1" />
       <File FileName="Assets/Script/EnemyBulletC.cs" Line="24" Column="35" />
       <File FileName="Assets/Script/Boss_stage1.cs" Line="13" Column="21" />
@@ -24,7 +24,7 @@
       <File FileName="Assets/Script/BossBulletS1.cs" Line="7" Column="25" />
       <File FileName="Assets/Script/Boss_stage2.cs" Line="217" Column="1" />
       <File FileName="Assets/Script/BossBulletS2.cs" Line="24" Column="36" />
-      <File FileName="Assets/Script/Stage3_Wave.cs" Line="263" Column="13" />
+      <File FileName="Assets/Script/Stage3_Wave.cs" Line="263" Column="1" />
       <File FileName="Assets/Script/Boss_stage3.cs" Line="200" Column="28" />
       <File FileName="Assets/Script/LeftW.cs" Line="35" Column="39" />
       <File FileName="Assets/Script/RightW.cs" Line="37" Column="10" />
@@ -32,7 +32,7 @@
       <File FileName="Assets/Script/Stage2_Wave.cs" Line="265" Column="14" />
       <File FileName="Assets/Script/END.cs" Line="8" Column="11" />
       <File FileName="Assets/Script/SEController.cs" Line="27" Column="45" />
-      <File FileName="Assets/Script/Pad.cs" Line="15" Column="9" />
+      <File FileName="Assets/Script/Pad.cs" Line="15" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />

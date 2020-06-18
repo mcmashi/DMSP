@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 61719839132321190}
   - component: {fileID: 50170325834834642}
   - component: {fileID: 114457695778105356}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Energy
   m_TagString: energy
   m_Icon: {fileID: 0}

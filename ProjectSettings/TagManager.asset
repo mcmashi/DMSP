@@ -19,11 +19,11 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - PBullet
+  - Enemy
+  - Player
+  - Item
+  - EBullet
   - 
   - 
   - 
